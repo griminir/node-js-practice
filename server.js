@@ -9,8 +9,7 @@ app.use(cors());
 app.get('/api/todo', async (req, res) => {
   const conn = await sql.connect(config);
   const data = await conn.request().query('select * from ToDoItems');
-  const todo = res.json(data.recordset);
-  return todo;
+  res.json(data.recordset);
 });
 
 app.get('/api/todo/:id', async (req, res) => {
